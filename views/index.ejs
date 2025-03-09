@@ -6,18 +6,8 @@
     <title>Inventory App</title>
 </head>
 <body>
-    <h1><%= title%></h1>
-    <ul>
-        <% if (locals.categories) {%>
-            <% categories.map((category) =>  {%>
-                <li>
-                    <a href="/categories/<%=category.id%>">
-                        <%= category.category_name%>
-                    </a>
-                </li>
-            <%})%>
-        <%}%>
-        
-    </ul>
+    <%- include("header"); -%>
+    <%- include("categories")%>
+    <%- include("food")%>
 </body>
 </html>

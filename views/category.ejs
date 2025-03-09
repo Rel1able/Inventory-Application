@@ -6,6 +6,8 @@
     <title><%= title%>></title>
 </head>
 <body>
+    <%- include("header")%>
+    <%- include("categories")%>
     <h1><%= title%></h1>
     <ul>
         <% if(locals.food){%>
@@ -13,7 +15,6 @@
                 <li><%= food.food_name%></li>
             <%})%>
         <%}%>
-        
     </ul>
 </body>
 </html>

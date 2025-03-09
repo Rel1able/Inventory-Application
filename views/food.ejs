@@ -1,0 +1,10 @@
+<ul>
+        <% if (locals.food) {%>
+            <% food.map((product) =>  {%>
+                <li>
+                    <%= product.food_name%>
+                </li>
+            <%})%>
+        <%}%>
+        
+    </ul>

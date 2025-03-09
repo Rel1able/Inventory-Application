@@ -3,7 +3,7 @@ const categoriesController = require("../controllers/categoriesController");
 
 categoriesRouter = Router();
 
-categoriesRouter.get("/", categoriesController.getAllCategories)
+categoriesRouter.get("/", categoriesController.getAllCategoriesAndFood)
 
 categoriesRouter.get("/:categoryId", categoriesController.getCategoryFood);
 

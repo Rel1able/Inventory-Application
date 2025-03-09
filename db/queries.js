@@ -5,6 +5,11 @@ async function getAllCategories() {
     return rows;
 }
 
+async function getAllFood() {
+    const { rows } = await pool.query("SELECT * FROM food");
+    return rows;
+}
+
 async function getCategoryFood(categoryId) {
     const {rows} = await pool.query('SELECT food_name FROM food WHERE category_id = ($1)', [categoryId])
     return rows;
@@ -27,5 +32,6 @@ async function insertCategory(categoryName) {
 module.exports = {
     getAllCategories,
     getCategoryFood,
-    getCategoryTitle
+    getCategoryTitle,
+    getAllFood
 }

@@ -1,0 +1,12 @@
+<ul>
+    <a href="/">Homepage</a>
+        <% if (locals.categories) {%>
+            <% categories.map((category) =>  {%>
+                <li>
+                    <a href="/<%=category.id%>">
+                        <%= category.category_name%>
+                    </a>
+                </li>
+            <%})%>
+        <%}%>
+</ul>
