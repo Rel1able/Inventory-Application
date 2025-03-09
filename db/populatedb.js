@@ -9,7 +9,7 @@ const SQL = `
 
 CREATE TABLE IF NOT EXISTS categories (
  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
- category_name VARCHAR(255));
+ category_name VARCHAR(255) UNIQUE);
 
 INSERT INTO categories (category_name)
  VALUES
@@ -21,7 +21,7 @@ INSERT INTO categories (category_name)
 
 CREATE TABLE IF NOT EXISTS food (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    food_name VARCHAR(255),
+    food_name VARCHAR(255) UNIQUE,
     category_id INTEGER,
     supplier_id INTEGER
 );

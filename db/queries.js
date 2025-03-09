@@ -33,5 +33,6 @@ module.exports = {
     getAllCategories,
     getCategoryFood,
     getCategoryTitle,
-    getAllFood
+    getAllFood,
+    insertCategory
 }
