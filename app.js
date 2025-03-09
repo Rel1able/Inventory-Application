@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const categoriesRouter = require("./routes/categoriesRouter");
 require("dotenv").config();
 
 
@@ -10,6 +11,8 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
+
+app.use("/categories", categoriesRouter);
 
 
 
