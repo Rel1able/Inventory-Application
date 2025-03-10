@@ -23,22 +23,23 @@ async function getCategoryFood(req, res) {
     } )
 }
 
-async function addCategory(req, res) {
+async function renderAddCategoryForm(req, res) {
     res.render("addCategoryForm", {
         title: "Add category"
     })
     console.log("opened form");
 }
 
-async function logCategory(req, res) {
-    console.log("added");
+async function insertCategory(req, res) {
+    const categoryName = req.body.categoryName;
+    console.log(req.body.categoryName);
+    await db.insertCategory(categoryName)
     res.redirect("/");
-
 }
 
 module.exports = {
     getAllCategoriesAndFood,
     getCategoryFood,
-    addCategory,
-    logCategory
+    renderAddCategoryForm,
+    insertCategory
 }

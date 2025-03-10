@@ -11,8 +11,11 @@
     <h1><%= title%></h1>
     <ul>
         <% if(locals.food){%>
-            <% food.map((food) => {%>
-                <li><%= food.food_name%></li>
+            <% food.map((product) => {%>
+                
+                <li>
+                    <a href="/food/<%=product.id%>"><%= product.food_name%></a>
+                </li>
             <%})%>
         <%}%>
     </ul>

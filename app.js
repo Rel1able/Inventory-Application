@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const categoriesRouter = require("./routes/categoriesRouter");
+const foodRouter = require("./routes/foodRouter");
 require("dotenv").config();
 
 
@@ -13,6 +14,7 @@ const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
 app.use("/", categoriesRouter);
+app.use("/food", foodRouter);
 
 
 

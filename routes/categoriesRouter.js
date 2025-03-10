@@ -1,12 +1,12 @@
 const { Router } = require("express");
 const categoriesController = require("../controllers/categoriesController");
 
-categoriesRouter = Router();
+const categoriesRouter = Router();
 
 categoriesRouter.get("/", categoriesController.getAllCategoriesAndFood)
 
-categoriesRouter.get("/createCategory", categoriesController.addCategory)
-categoriesRouter.post("/createCategory", categoriesController.logCategory)
+categoriesRouter.get("/createCategory", categoriesController.renderAddCategoryForm)
+categoriesRouter.post("/createCategory", categoriesController.insertCategory)
 
 
 categoriesRouter.get("/:categoryId", categoriesController.getCategoryFood);

@@ -2,7 +2,7 @@
         <% if (locals.food) {%>
             <% food.map((product) =>  {%>
                 <li>
-                    <%= product.food_name%>
+                    <a href="/food/<%=product.id%>"><%= product.food_name%></a>
                 </li>
             <%})%>
         <%}%>

@@ -11,7 +11,7 @@ async function getAllFood() {
 }
 
 async function getCategoryFood(categoryId) {
-    const {rows} = await pool.query('SELECT food_name FROM food WHERE category_id = ($1)', [categoryId])
+    const {rows} = await pool.query('SELECT id, food_name FROM food WHERE category_id = ($1)', [categoryId])
     return rows;
 }
 
@@ -26,6 +26,10 @@ async function insertCategory(categoryName) {
     console.log("inserted");
 }
 
+async function getFoodInfo(foodId) {
+    const { rows } = await pool.query("SELECT id, food_name, food_description FROM food WHERE id = ($1)", [foodId])
+    return rows[0];
+}
 
 
 
@@ -34,5 +38,6 @@ module.exports = {
     getCategoryFood,
     getCategoryTitle,
     getAllFood,
-    insertCategory
+    insertCategory,
+    getFoodInfo
 }
