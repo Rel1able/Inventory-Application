@@ -37,9 +37,32 @@ async function insertCategory(req, res) {
     res.redirect("/");
 }
 
+async function renderEditCategoryForm(req, res) {
+    const categoryId = req.params.id;
+    console.log(categoryId);
+    const category = await db.getCategory(categoryId);
+    res.render("editCategoryForm", {
+        title: "Edit category",
+        category: category
+    })
+}
+
+async function saveEditedCategory(req, res) {
+    const categoryId = req.params.id;
+    console.log("CAtegoryid", categoryId);
+    const newName = req.body.categoryName;
+    console.log("New name", newName);
+    await db.updateCategory(newName, categoryId);
+    console.log("updated");
+    res.redirect("/");
+    
+}
+
 module.exports = {
     getAllCategoriesAndFood,
     getCategoryFood,
     renderAddCategoryForm,
-    insertCategory
+    insertCategory,
+    renderEditCategoryForm,
+    saveEditedCategory
 }

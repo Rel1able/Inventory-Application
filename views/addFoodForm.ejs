@@ -7,8 +7,14 @@
 </head>
 <body>
     <form action="/food/addFood" method="POST">
-        <label for="foodName">Enter the name of the food</label>
-        <input type="text" name="foodName" id="foodName"/>
+        <div>
+            <label for="foodName">Enter the name of the food</label>
+            <input type="text" name="foodName" id="foodName"/>
+        </div>
+        <div>
+            <label for="foodDesc">Enter the food description</label>
+            <input type="text" name="foodDesc" id="foodDesc"/>
+        </div>
         <select name="category">
             <option>Please choose the category you want to add the food to</option>
             <% categories.forEach((category) => {%>

@@ -21,7 +21,7 @@ INSERT INTO categories (category_name)
 
 CREATE TABLE IF NOT EXISTS food (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    food_name VARCHAR(255) UNIQUE,
+    food_name VARCHAR(255),
     category_id INTEGER,
     supplier_id INTEGER,
     food_description VARCHAR(255)

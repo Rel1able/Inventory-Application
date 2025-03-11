@@ -27,10 +27,12 @@ async function renderAddFoodForm(req, res) {
 async function insertFood(req, res) {
     const foodName = req.body.foodName;
     const categoryId = req.body.category;
+    const foodDescription = req.body.foodDesc;
     console.log(foodName);
     console.log(categoryId);
+    console.log(foodDescription);
 
-    await db.insertFood(foodName, categoryId, 1, "Some cool pumpkin");
+    await db.insertFood(foodName, categoryId, 1, foodDescription);
     res.redirect("/");
 
 }
