@@ -12,6 +12,31 @@ async function renderFoodInfo(req, res) {
     })
 }
 
+async function renderAddFoodForm(req, res) {
+
+    const categories = await db.getAllCategories();
+    console.log("Categories: ", categories);
+    
+
+    res.render("addFoodForm", {
+        title: "Add food",
+        categories: categories
+       }) 
+}
+
+async function insertFood(req, res) {
+    const foodName = req.body.foodName;
+    const categoryId = req.body.category;
+    console.log(foodName);
+    console.log(categoryId);
+
+    await db.insertFood(foodName, categoryId, 1, "Some cool pumpkin");
+    res.redirect("/");
+
+}
+
 module.exports = {
-    renderFoodInfo
+    renderFoodInfo,
+    renderAddFoodForm,
+    insertFood
 }
