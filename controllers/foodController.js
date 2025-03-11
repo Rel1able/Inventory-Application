@@ -1,6 +1,6 @@
 const db = require("../db/queries");
 
-async function getFoodInfo(req, res) {
+async function renderFoodInfo(req, res) {
 
     const foodId = req.params.id;
     console.log(foodId);
@@ -13,5 +13,5 @@ async function getFoodInfo(req, res) {
 }
 
 module.exports = {
-    getFoodInfo
+    renderFoodInfo
 }
