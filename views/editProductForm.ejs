@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+</head>
+<body>
+    <form action="/food/<%= product.id%>/editProduct" method="POST">
+        <div>
+             <label for="productName">Enter the name of the food</label>
+            <input type="text" value="<%= product.food_name%>" name="productName" id="productName"/>
+        </div>
+        <div>
+            <label for="productDesc">Enter the product description</label>
+            <input type="text" value="<%= product.food_description%>" name="productDesc" id="productDesc"/>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

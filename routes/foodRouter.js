@@ -5,6 +5,9 @@ const foodRouter = Router();
 foodRouter.get("/addFood", foodController.renderAddFoodForm)
 foodRouter.post("/addFood", foodController.insertFood);
 
+foodRouter.get("/:id/editProduct",foodController.renderEditProductForm)
+foodRouter.post("/:id/editProduct", foodController.saveEditedProduct);
+
 foodRouter.get("/:id", foodController.renderFoodInfo)
 
 

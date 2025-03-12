@@ -3,6 +3,7 @@
             <% food.map((product) =>  {%>
                 <li>
                     <a href="/food/<%=product.id%>"><%= product.food_name%></a>
+                    <a href="/food/<%=product.id%>/editProduct">Edit</a>
                 </li>
             <%})%>
         <%}%>
