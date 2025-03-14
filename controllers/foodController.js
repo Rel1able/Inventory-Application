@@ -1,4 +1,7 @@
 const db = require("../db/queries");
+const { body, validationResult } = require("express-validator");
+
+const alphaErr = "must only contain letters";
 
 async function renderFoodInfo(req, res) {
     const foodId = req.params.id;
@@ -9,6 +12,19 @@ async function renderFoodInfo(req, res) {
     })
 }
 
+const validateAddFoodForm = [
+    body("foodName").trim()
+        .isAlpha().withMessage(`Food name ${alphaErr}`)
+        .isLength({min: 1, max: 20}).withMessage("Food name can be between 1 and 20 characters"),
+    body("foodDesc").trim()
+        .isAlpha().withMessage(`Food Description ${alphaErr}`)
+        .isLength({ min: 1, max: 50 }).withMessage("Description can be between 1 and 50 characters"),
+    body("category")
+        .not()
+        .equals("Please choose the category you want to add the food to")
+        .withMessage("Please select the category you want to add the product")
+]
+
 async function renderAddFoodForm(req, res) {
     const categories = await db.getAllCategories();
     res.render("addFoodForm", {
@@ -18,6 +34,17 @@ async function renderAddFoodForm(req, res) {
 }
 
 async function insertFood(req, res) {
+    const categories = await db.getAllCategories();
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+        return res.status(400).render("addFoodForm", {
+            title: "Add food",
+            categories: categories,
+            errors: errors.array(),
+        })
+    }
+
     const foodName = req.body.foodName;
     const categoryId = req.body.category;
     const foodDescription = req.body.foodDesc;
@@ -55,5 +82,6 @@ module.exports = {
     renderAddFoodForm,
     insertFood,
     renderEditProductForm,
-    saveEditedProduct
+    saveEditedProduct,
+    validateAddFoodForm
 }
