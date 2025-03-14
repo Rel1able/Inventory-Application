@@ -8,6 +8,15 @@
 <body>
     <form action="/food/<%= product.id%>/editProduct" method="POST">
         <div>
+            <select name="category">
+                <% categories.forEach((category) => {%>
+                    <option value="<%=category.id%>" <%= product.category_id === category.id ? "selected" : ""%> >
+                        <%= category.category_name%>
+                    </option>
+                <%})%>
+            </select>
+        </div>
+        <div>
              <label for="productName">Enter the name of the food</label>
             <input type="text" value="<%= product.food_name%>" name="productName" id="productName"/>
         </div>

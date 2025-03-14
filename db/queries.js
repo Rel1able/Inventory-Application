@@ -32,7 +32,7 @@ async function insertCategory(categoryName) {
 }
 
 async function getFoodInfo(foodId) {
-    const { rows } = await pool.query("SELECT id, food_name, food_description FROM food WHERE id = ($1)", [foodId])
+    const { rows } = await pool.query("SELECT * FROM food WHERE id = ($1)", [foodId])
     return rows[0];
 }
 
@@ -46,8 +46,8 @@ async function updateCategory(newName, categoryId) {
     await pool.query("UPDATE categories SET category_name = ($1) WHERE id = ($2)", [newName, categoryId])
 }
 
-async function updateProduct(productId, newName, newDescription) {
-    await pool.query("UPDATE food SET food_name = ($1), food_description = ($2) WHERE id = ($3)", [newName, newDescription, productId]);
+async function updateProduct(productId, newName, newDescription, newCategoryId) {
+    await pool.query("UPDATE food SET food_name = ($1), food_description = ($2), category_id = ($3) WHERE id = ($4)", [newName, newDescription, newCategoryId, productId]);
 }
 
 

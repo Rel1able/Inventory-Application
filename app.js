@@ -7,7 +7,7 @@ require("dotenv").config();
 
 
 const PORT = process.env.PORT || 8000;
-
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 const assetsPath = path.join(__dirname, "public");

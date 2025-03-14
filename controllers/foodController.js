@@ -28,11 +28,15 @@ async function insertFood(req, res) {
 }
 
 async function renderEditProductForm(req, res) {
+    const categories = await db.getAllCategories();
+    console.log(categories);
     const id = req.params.id;
     const product = await db.getFoodInfo(id);
+    console.log("Product", product);
      res.render("editProductForm", {
         title: "Edit Product", 
-        product: product
+         product: product,
+        categories: categories
      })
 }
 
@@ -40,7 +44,9 @@ async function saveEditedProduct(req, res) {
     const id = req.params.id;
     const name = req.body.productName;
     const desc = req.body.productDesc;
-    await db.updateProduct(id, name, desc);
+    const categoryId = req.body.category;
+    console.log("Categoryid", categoryId)
+    await db.updateProduct(id, name, desc, categoryId);
     res.redirect("/");
 }
 
