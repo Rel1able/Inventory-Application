@@ -24,8 +24,10 @@ async function getCategoryFood(req, res) {
 }
 
 async function renderAddCategoryForm(req, res) {
+    const categories = await db.getAllCategories();
     res.render("addCategoryForm", {
-        title: "Add category"
+        title: "Add category",
+        categories: categories
     })
 }
 const alphaErr = "must only contain letters";
@@ -38,11 +40,12 @@ const validateCategoryForm = [
 
 async function insertCategory(req, res) {
     const errors = validationResult(req);
-
+    const categories = await db.getAllCategories();
     if (!errors.isEmpty()) {
         return res.status(404).render("addCategoryForm", {
             title: "Add category",
-            errors: errors.array()
+            errors: errors.array(),
+            categories: categories
     })
     }
     const categoryName = req.body.categoryName;
@@ -51,11 +54,13 @@ async function insertCategory(req, res) {
 }
 
 async function renderEditCategoryForm(req, res) {
+    const categories = await db.getAllCategories();
     const categoryId = req.params.id;
     const category = await db.getCategory(categoryId);
     res.render("editCategoryForm", {
         title: "Edit category",
-        category: category
+        category: category,
+        categories: categories
     })
 }
 

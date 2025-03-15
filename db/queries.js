@@ -17,7 +17,6 @@ async function getCategoryFood(categoryId) {
 
 async function getCategoryTitle(categoryId) {
     const { rows} = await pool.query('SELECT category_name FROM categories WHERE id = ($1)', [categoryId]);
-    console.log(rows[0].category_name);
     return rows[0].category_name;
 }
 
@@ -28,7 +27,6 @@ async function getCategory(categoryId) {
 
 async function insertCategory(categoryName) {
     await pool.query("INSERT INTO categories (category_name) VALUES($1)", [categoryName]);
-    console.log("inserted");
 }
 
 async function getFoodInfo(foodId) {

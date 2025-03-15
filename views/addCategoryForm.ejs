@@ -6,6 +6,8 @@
     <title><%= title%></title>
 </head>
 <body>
+    <%- include("header")%>
+    <%- include("categories")%>
     <form action="/createCategory" method="POST">
         <label for="categoryName">Enter the name of the category</label>
         <input type="text" name="categoryName" id="categoryName"/>

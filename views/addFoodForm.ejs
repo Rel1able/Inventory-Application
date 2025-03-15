@@ -6,6 +6,8 @@
     <title><%= title%></title>
 </head>
 <body>
+    <%- include("header")%>
+    <%- include("categories")%>
     <form action="/food/addFood" method="POST">
         <div>
             <label for="foodName">Enter the name of the food</label>

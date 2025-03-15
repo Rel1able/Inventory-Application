@@ -6,14 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/">Home</a>
+    <%- include("header")%>
+    <%- include("categories")%>
     <h1><%= productName%></h1>
     <% if (locals.category){%>
         <h2>Category: <%=category.category_name%></h2>
     <%}%>
     
     <p><%= productDescription%></p>
-     <a href="/food/<%=product.id%>/editProduct">Edit</a>
+     <a href="/food/<%=product.id%>/editProduct">Edit Product</a>
     <form action="/food/<%= productId%>" method="POST">
         <button type="submit" onClick="return confirm('Are you sure you want to delete this product?')">Delete Product</button>
     </form>

@@ -6,6 +6,8 @@
     <title><%= title%></title>
 </head>
 <body>
+    <%- include("header")%>
+    <%- include("categories")%>
     <form action="/food/<%= product.id%>/editProduct" method="POST">
         <div>
             <select name="category">
@@ -25,6 +27,7 @@
             <input type="text" value="<%= product.food_description%>" name="foodDesc" id="foodDesc"/>
         </div>
         <button type="submit">Save</button>
+        <a href="/">Cancel</a>
     </form>
     <%- include("partials/errors.ejs")%>
 </body>

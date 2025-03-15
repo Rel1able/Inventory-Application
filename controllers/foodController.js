@@ -8,13 +8,15 @@ async function renderFoodInfo(req, res) {
     let foodData = await db.getFoodInfo(foodId);
     const categoryId = foodData.category_id;
     const category = await db.getCategory(categoryId)
+    const categories = await db.getAllCategories();
 
     res.render("singleProduct", {
         productName: foodData.food_name,
         productDescription: foodData.food_description,
         productId: foodId,
         category: category,
-        product: foodData
+        product: foodData,
+        categories: categories
     })
 }
 
@@ -65,10 +67,8 @@ async function insertFood(req, res) {
 
 async function renderEditProductForm(req, res) {
     const categories = await db.getAllCategories();
-    console.log(categories);
     const id = req.params.id;
     const product = await db.getFoodInfo(id);
-    console.log("Product", product);
      res.render("editProductForm", {
         title: "Edit Product", 
          product: product,

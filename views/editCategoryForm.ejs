@@ -6,11 +6,15 @@
     <title><%= title%></title>
 </head>
 <body>
+    <%- include("header")%>
+    <%- include("categories")%>
     <form action="/<%= category.id%>/editCategory" method="POST">
         <label for="categoryName">Enter the name of the category</label>
         <input type="text" value="<%= category.category_name%>" name="categoryName" id="categoryName"/>
         <button type="submit">Save</button>
+        <a href="/">Cancel</a>
     </form>
+
     <%- include("partials/errors.ejs")%>
 </body>
 </html> 
