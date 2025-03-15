@@ -1,7 +1,7 @@
 const db = require("../db/queries");
 const { body, validationResult } = require("express-validator");
 
-const alphaErr = "must only contain letters";
+
 
 async function renderFoodInfo(req, res) {
     const foodId = req.params.id;
@@ -12,13 +12,16 @@ async function renderFoodInfo(req, res) {
     })
 }
 
+const alphaErr = "must only contain letters";
 const validateAddFoodForm = [
-    body("foodName").trim()
-        .isAlpha().withMessage(`Food name ${alphaErr}`)
-        .isLength({min: 1, max: 20}).withMessage("Food name can be between 1 and 20 characters"),
-    body("foodDesc").trim()
-        .isAlpha().withMessage(`Food Description ${alphaErr}`)
-        .isLength({ min: 1, max: 50 }).withMessage("Description can be between 1 and 50 characters"),
+    body("foodName")
+        .trim()
+        .matches(/^[a-zA-Z ]*$/).withMessage(`Food name ${alphaErr}`)
+        .isLength({min: 1, max: 20}).withMessage("Food name must be between 1 and 20 characters"),
+    body("foodDesc")
+        .trim()
+        .matches(/^[a-zA-Z ]*$/).withMessage(`Food Description ${alphaErr}`)
+        .isLength({ min: 1, max: 50 }).withMessage("Description must be between 1 and 50 characters"),
     body("category")
         .not()
         .equals("Please choose the category you want to add the food to")
@@ -69,10 +72,21 @@ async function renderEditProductForm(req, res) {
 
 async function saveEditedProduct(req, res) {
     const id = req.params.id;
-    const name = req.body.productName;
-    const desc = req.body.productDesc;
+    const name = req.body.foodName;
+    const desc = req.body.foodDesc;
     const categoryId = req.body.category;
-    console.log("Categoryid", categoryId)
+    const categories = await db.getAllCategories();
+    const product = await db.getFoodInfo(id);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).render("editProductForm", {
+        title: "Edit Product", 
+        product: product,
+        categories: categories,
+        errors: errors.array(),
+     })
+    }
+
     await db.updateProduct(id, name, desc, categoryId);
     res.redirect("/");
 }

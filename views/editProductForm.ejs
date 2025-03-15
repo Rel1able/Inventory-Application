@@ -17,14 +17,15 @@
             </select>
         </div>
         <div>
-             <label for="productName">Enter the name of the food</label>
-            <input type="text" value="<%= product.food_name%>" name="productName" id="productName"/>
+             <label for="foodName">Enter the name of the food</label>
+            <input type="text" value="<%= product.food_name%>" name="foodName" id="foodName"/>
         </div>
         <div>
-            <label for="productDesc">Enter the product description</label>
-            <input type="text" value="<%= product.food_description%>" name="productDesc" id="productDesc"/>
+            <label for="foodDesc">Enter the product description</label>
+            <input type="text" value="<%= product.food_description%>" name="foodDesc" id="foodDesc"/>
         </div>
         <button type="submit">Save</button>
     </form>
+    <%- include("partials/errors.ejs")%>
 </body>
 </html>
