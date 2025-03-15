@@ -14,6 +14,7 @@ async function renderFoodInfo(req, res) {
         productDescription: foodData.food_description,
         productId: foodId,
         category: category,
+        product: foodData
     })
 }
 

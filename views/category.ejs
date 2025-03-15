@@ -12,6 +12,7 @@
     <form action="/<%= category.id%>" method="POST">
         <button type="submit" onClick="return confirm('Are you sure you want to delete this category?')">Delete Category</button>
     </form>
+    <a href="/<%=category.id%>/editCategory">Edit</a>
     <ul>
         <% if(locals.food){%>
             <% food.map((product) => {%>
