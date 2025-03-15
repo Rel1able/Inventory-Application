@@ -33,7 +33,7 @@ async function insertCategory(categoryName) {
 
 async function getFoodInfo(foodId) {
     const { rows } = await pool.query("SELECT * FROM food WHERE id = ($1)", [foodId])
-    return rows[0];
+    return rows[0]; 
 }
 
 

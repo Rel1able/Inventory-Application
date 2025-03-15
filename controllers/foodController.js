@@ -6,10 +6,14 @@ const { body, validationResult } = require("express-validator");
 async function renderFoodInfo(req, res) {
     const foodId = req.params.id;
     let foodData = await db.getFoodInfo(foodId);
+    const categoryId = foodData.category_id;
+    const category = await db.getCategory(categoryId)
+
     res.render("singleProduct", {
         productName: foodData.food_name,
         productDescription: foodData.food_description,
-        productId: foodId
+        productId: foodId,
+        category: category,
     })
 }
 
