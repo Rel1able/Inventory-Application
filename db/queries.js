@@ -50,7 +50,14 @@ async function updateProduct(productId, newName, newDescription, newCategoryId) 
     await pool.query("UPDATE food SET food_name = ($1), food_description = ($2), category_id = ($3) WHERE id = ($4)", [newName, newDescription, newCategoryId, productId]);
 }
 
+async function deleteCategory(categoryId) {
+    await pool.query("DELETE FROM categories WHERE id = ($1)", [categoryId])
+}
 
+
+async function deleteProduct(productId) {
+    await pool.query("DELETE FROM food WHERE id = ($1)", [productId]);
+}
 
 module.exports = {
     getAllCategories,
@@ -62,5 +69,7 @@ module.exports = {
     insertFood,
     updateCategory,
     getCategory,
-    updateProduct
+    updateProduct,
+    deleteCategory,
+    deleteProduct
 }

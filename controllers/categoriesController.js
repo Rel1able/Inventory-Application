@@ -13,11 +13,13 @@ async function getCategoryFood(req, res) {
     const categories = await db.getAllCategories();
     const title = await db.getCategoryTitle(categoryId);
     const food = await db.getCategoryFood(categoryId);
+    const category = await db.getCategory(categoryId);
 
     res.render("category.ejs", {
         title: title,
         food: food,
-        categories: categories
+        categories: categories,
+        category: category
     } )
 }
 
@@ -73,8 +75,14 @@ async function saveEditedCategory(req, res) {
 
     await db.updateCategory(newName, categoryId);
     res.redirect("/");
-    
 }
+
+async function deleteCategory(req, res) {
+    const categoryId = req.params.categoryId;
+    await db.deleteCategory(categoryId);
+    res.redirect("/");
+}
+
 
 module.exports = {
     getAllCategoriesAndFood,
@@ -83,5 +91,6 @@ module.exports = {
     insertCategory,
     renderEditCategoryForm,
     saveEditedCategory,
-    validateCategoryForm
+    validateCategoryForm,
+    deleteCategory
 }

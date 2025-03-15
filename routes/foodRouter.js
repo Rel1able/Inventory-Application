@@ -9,6 +9,7 @@ foodRouter.get("/:id/editProduct",foodController.renderEditProductForm)
 foodRouter.post("/:id/editProduct",foodController.validateFoodForm, foodController.saveEditedProduct);
 
 foodRouter.get("/:id", foodController.renderFoodInfo)
+foodRouter.post("/:id", foodController.deleteProduct)
 
 
 

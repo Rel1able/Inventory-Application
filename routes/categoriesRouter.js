@@ -11,8 +11,8 @@ categoriesRouter.post("/createCategory",categoriesController.validateCategoryFor
 categoriesRouter.get("/:id/editCategory", categoriesController.renderEditCategoryForm);
 categoriesRouter.post("/:id/editCategory",categoriesController.validateCategoryForm, categoriesController.saveEditedCategory);
 
-
 categoriesRouter.get("/:categoryId", categoriesController.getCategoryFood);
+categoriesRouter.post("/:categoryId", categoriesController.deleteCategory);
 
 
 

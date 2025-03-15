@@ -9,6 +9,9 @@
     <%- include("header")%>
     <%- include("categories")%>
     <h1><%= title%></h1>
+    <form action="/<%= category.id%>" method="POST">
+        <button type="submit" onClick="return confirm('Are you sure you want to delete this category?')">Delete Category</button>
+    </form>
     <ul>
         <% if(locals.food){%>
             <% food.map((product) => {%>

@@ -8,7 +8,8 @@ async function renderFoodInfo(req, res) {
     let foodData = await db.getFoodInfo(foodId);
     res.render("singleProduct", {
         productName: foodData.food_name,
-        productDescription: foodData.food_description
+        productDescription: foodData.food_description,
+        productId: foodId
     })
 }
 
@@ -91,11 +92,20 @@ async function saveEditedProduct(req, res) {
     res.redirect("/");
 }
 
+
+async function deleteProduct(req, res) {    
+    const productId = req.params.id;
+    await db.deleteProduct(productId);
+    res.redirect("/");
+}
+
+
 module.exports = {
     renderFoodInfo,
     renderAddFoodForm,
     insertFood,
     renderEditProductForm,
     saveEditedProduct,
-    validateFoodForm
+    validateFoodForm,
+    deleteProduct
 }
