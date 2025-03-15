@@ -6,10 +6,10 @@ const categoriesRouter = Router();
 categoriesRouter.get("/", categoriesController.getAllCategoriesAndFood)
 
 categoriesRouter.get("/createCategory", categoriesController.renderAddCategoryForm)
-categoriesRouter.post("/createCategory", categoriesController.insertCategory)
+categoriesRouter.post("/createCategory",categoriesController.validateCategoryForm, categoriesController.insertCategory)
 
 categoriesRouter.get("/:id/editCategory", categoriesController.renderEditCategoryForm);
-categoriesRouter.post("/:id/editCategory", categoriesController.saveEditedCategory);
+categoriesRouter.post("/:id/editCategory",categoriesController.validateCategoryForm, categoriesController.saveEditedCategory);
 
 
 categoriesRouter.get("/:categoryId", categoriesController.getCategoryFood);

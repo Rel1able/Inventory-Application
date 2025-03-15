@@ -13,7 +13,7 @@ async function renderFoodInfo(req, res) {
 }
 
 const alphaErr = "must only contain letters";
-const validateAddFoodForm = [
+const validateFoodForm = [
     body("foodName")
         .trim()
         .matches(/^[a-zA-Z ]*$/).withMessage(`Food name ${alphaErr}`)
@@ -97,5 +97,5 @@ module.exports = {
     insertFood,
     renderEditProductForm,
     saveEditedProduct,
-    validateAddFoodForm
+    validateFoodForm
 }
