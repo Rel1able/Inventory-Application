@@ -1,0 +1,43 @@
+:root{
+    --main-color:  rgb(20, 31, 34);
+    --secondary-color: rgb(57, 219, 123);
+    --additional-color1: rgb(32, 46, 55);
+    --additional-color2:  rgb(24, 37, 44);
+    --additional-color3: rgb(224, 231, 243);
+    
+}
+
+
+*{
+    box-sizing: border-box;
+    font-family: sans-serif, Verdana, Geneva, Tahoma;
+}
+
+body{
+    background-color: var(--main-color);
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: var(--additional-color3);
+    background-color: var(--additional-color2);
+
+
+}
+
+.btn{
+    background-color: var(--secondary-color);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: var(--additional-color1)
+}
