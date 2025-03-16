@@ -1,7 +1,10 @@
 <% if (locals.errors){%>
-    <ul>
-        <% errors.forEach((error) => {%>
-            <li><%= error.msg%></li>
-        <%})%>
+    <h1 class="error-txt">Error</h1>
+    <ul class="errors-list">
+        <% errors.forEach((error)=> {%>
+            <li>
+                <%= error.msg%>
+            </li>
+            <%})%>
     </ul>
-<%}%>
+    <%}%>

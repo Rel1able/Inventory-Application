@@ -17,7 +17,8 @@
                 <%- include("header")%>
                     <div class="form-container">
                         <form class="form" action="/food/<%= product.id%>/editProduct" method="POST">
-                            <div>
+                            <div class="select-container">
+                                <label for="category">Select the category</label>
                                 <select name="category">
                                     <% categories.forEach((category)=> {%>
                                         <option value="<%=category.id%>" <%=product.category_id===category.id
