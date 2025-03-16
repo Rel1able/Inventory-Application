@@ -21,7 +21,7 @@
                             <input type="text" value="<%= category.category_name%>" name="categoryName"
                                 id="categoryName" />
                             <button class="btn-2" type="submit">Save</button>
-                            <a class="btn-2" href="/">Cancel</a>
+                            <a class="btn-2" href="/<%= category.id%>">Cancel</a>
                         </form>
 
                         <%- include("partials/errors.ejs")%>
