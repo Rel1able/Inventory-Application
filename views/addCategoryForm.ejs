@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title%></title>
+    <link rel="stylesheet" href=/styles.css>
 </head>
 <body>
-    <%- include("header")%>
-    <%- include("categories")%>
-    <form action="/createCategory" method="POST">
-        <label for="categoryName">Enter the name of the category</label>
-        <input type="text" name="categoryName" id="categoryName"/>
-        <button type="submit">Add category</button>
-    </form>
-    <%- include("partials/errors.ejs")%>
+    <div class="body-container">
+         <%- include("categories")%>
+         <div class="main-container">
+            <%- include("header")%>
+            <div>
+                <form action="/createCategory" method="POST">
+                    <label for="categoryName">Enter the name of the category</label>
+                    <input type="text" name="categoryName" id="categoryName"/>
+                    <button type="submit">Add category</button>
+                </form>
+                <%- include("partials/errors.ejs")%>
+            </div>
+         </div>
+    </div>
 </body>
 </html> 

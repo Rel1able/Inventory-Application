@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href=/styles.css>
 </head>
 <body>
-    <%- include("header")%>
-    <%- include("categories")%>
-    <h1><%= productName%></h1>
+    
+    <div class="body-container">
+        <%- include("categories")%>
+    
+        <div class="main-container">
+            <%- include("header"); -%>
+            <div class="food-container">
+                <h1><%= productName%></h1>
     <% if (locals.category){%>
         <h2>Category: <%=category.category_name%></h2>
     <%}%>
@@ -18,5 +24,9 @@
     <form action="/food/<%= productId%>" method="POST">
         <button type="submit" onClick="return confirm('Are you sure you want to delete this product?')">Delete Product</button>
     </form>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

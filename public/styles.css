@@ -70,6 +70,7 @@ a{
 
 .body-container{
     display: flex;
+    height: 100%;
 }
 
 .categories-container{

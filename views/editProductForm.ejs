@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title%></title>
+    <link rel="stylesheet" href=/styles.css>
 </head>
 <body>
-    <%- include("header")%>
-    <%- include("categories")%>
-    <form action="/food/<%= product.id%>/editProduct" method="POST">
+            <div class="body-container">
+         <%- include("categories")%>
+         <div class="main-container">
+            <%- include("header")%>
+            <div>
+                <form action="/food/<%= product.id%>/editProduct" method="POST">
         <div>
             <select name="category">
                 <% categories.forEach((category) => {%>
@@ -30,5 +34,11 @@
         <a href="/">Cancel</a>
     </form>
     <%- include("partials/errors.ejs")%>
+            </div>
+         </div>
+    </div>
+    
+    
 </body>
 </html>
+
