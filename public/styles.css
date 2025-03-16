@@ -204,3 +204,34 @@ select:hover{
 .errors-list{
     color: var(--secondary-color)
 }
+
+.category{
+    display: flex;
+    flex-direction: column;
+    border: 5px solid var(--additional-color2);
+    color: var(--additional-color3);
+    margin-top: 3rem;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+}
+
+.products-list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+}
+
+.product{
+    font-size: 1.3rem;
+}
+
+.category-header{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}

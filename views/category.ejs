@@ -16,10 +16,24 @@
 
             <div class="main-container">
                 <%- include("header"); -%>
-                    <div>
-                        <h1>
+                    <div class="category">
+                        <h1 class="category-header">
                             <%= title%>
                         </h1>
+
+
+                        <ul class="products-list">
+                            <% if(locals.food){%>
+                                <% food.map((product)=> {%>
+
+                                    <li class="product">
+                                        <a href="/food/<%=product.id%>">
+                                            <%= product.food_name%>
+                                        </a>
+                                    </li>
+                                    <%})%>
+                                        <%}%>
+                        </ul>
                         <div class="buttons">
                             <form action="/<%= category.id%>" method="POST">
                                 <button class="btn-2" type="submit"
@@ -28,19 +42,6 @@
                             </form>
                             <a class="btn-2" href="/<%=category.id%>/editCategory">Edit Category</a>
                         </div>
-
-                        <ul>
-                            <% if(locals.food){%>
-                                <% food.map((product)=> {%>
-
-                                    <li>
-                                        <a href="/food/<%=product.id%>">
-                                            <%= product.food_name%>
-                                        </a>
-                                    </li>
-                                    <%})%>
-                                        <%}%>
-                        </ul>
                     </div>
             </div>
     </div>
