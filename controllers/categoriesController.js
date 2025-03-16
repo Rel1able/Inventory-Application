@@ -79,7 +79,7 @@ async function saveEditedCategory(req, res) {
     }
 
     await db.updateCategory(newName, categoryId);
-    res.redirect("/");
+    res.redirect(`/${categoryId}`);
 }
 
 async function deleteCategory(req, res) {

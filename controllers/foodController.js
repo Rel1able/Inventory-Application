@@ -24,11 +24,11 @@ const alphaErr = "must only contain letters";
 const validateFoodForm = [
     body("foodName")
         .trim()
-        .matches(/^[a-zA-Z ]*$/).withMessage(`Food name ${alphaErr}`)
+        .matches(/^[a-zA-Z .,]*$/).withMessage(`Food name ${alphaErr}`)
         .isLength({min: 1, max: 20}).withMessage("Food name must be between 1 and 20 characters"),
     body("foodDesc")
         .trim()
-        .matches(/^[a-zA-Z ]*$/).withMessage(`Food Description ${alphaErr}`)
+        .matches(/^[a-zA-Z .,]*$/).withMessage(`Food Description ${alphaErr}`)
         .isLength({ min: 1, max: 50 }).withMessage("Description must be between 1 and 50 characters"),
     body("category")
         .not()
@@ -60,7 +60,7 @@ async function insertFood(req, res) {
     const categoryId = req.body.category;
     const foodDescription = req.body.foodDesc;
 
-    await db.insertFood(foodName, categoryId, 1, foodDescription);
+    await db.insertFood(foodName, categoryId, foodDescription);
     res.redirect("/");
 
 }
@@ -94,7 +94,7 @@ async function saveEditedProduct(req, res) {
     }
 
     await db.updateProduct(id, name, desc, categoryId);
-    res.redirect("/");
+    res.redirect(`/food/${id}`);
 }
 
 
