@@ -15,8 +15,8 @@
         <%- include("categories")%>
             <div class="main-container">
                 <%- include("header")%>
-                    <div>
-                        <form action="/food/<%= product.id%>/editProduct" method="POST">
+                    <div class="form-container">
+                        <form class="form" action="/food/<%= product.id%>/editProduct" method="POST">
                             <div>
                                 <select name="category">
                                     <% categories.forEach((category)=> {%>
@@ -36,8 +36,8 @@
                                 <input type="text" value="<%= product.food_description%>" name="foodDesc"
                                     id="foodDesc" />
                             </div>
-                            <button type="submit">Save</button>
-                            <a href="/">Cancel</a>
+                            <button class="btn-2" type="submit">Save</button>
+                            <a class="btn-2" href="/">Cancel</a>
                         </form>
                         <%- include("partials/errors.ejs")%>
                     </div>

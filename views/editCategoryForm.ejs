@@ -15,13 +15,13 @@
         <%- include("categories")%>
             <div class="main-container">
                 <%- include("header")%>
-                    <div>
-                        <form action="/<%= category.id%>/editCategory" method="POST">
+                    <div class="form-container">
+                        <form class="form" action="/<%= category.id%>/editCategory" method="POST">
                             <label for="categoryName">Enter the name of the category</label>
                             <input type="text" value="<%= category.category_name%>" name="categoryName"
                                 id="categoryName" />
-                            <button type="submit">Save</button>
-                            <a href="/">Cancel</a>
+                            <button class="btn-2" type="submit">Save</button>
+                            <a class="btn-2" href="/">Cancel</a>
                         </form>
 
                         <%- include("partials/errors.ejs")%>

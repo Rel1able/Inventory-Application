@@ -20,12 +20,15 @@
                         <h1>
                             <%= title%>
                         </h1>
-                        <form action="/<%= category.id%>" method="POST">
-                            <button type="submit"
-                                onClick="return confirm('Are you sure you want to delete this category?')">Delete
-                                Category</button>
-                        </form>
-                        <a href="/<%=category.id%>/editCategory">Edit Category</a>
+                        <div class="buttons">
+                            <form action="/<%= category.id%>" method="POST">
+                                <button class="btn-2" type="submit"
+                                    onClick="return confirm('Are you sure you want to delete this category?')">Delete
+                                    Category</button>
+                            </form>
+                            <a class="btn-2" href="/<%=category.id%>/editCategory">Edit Category</a>
+                        </div>
+
                         <ul>
                             <% if(locals.food){%>
                                 <% food.map((product)=> {%>
