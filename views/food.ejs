@@ -1,9 +1,11 @@
 <ul class="food-list">
     <% if (locals.food) {%>
-        <% food.map((product) =>  {%>
+        <% food.map((product)=> {%>
             <li class="card">
-                <a href="/food/<%=product.id%>"><%= product.food_name%></a>
-             </li>
-        <%})%>
-    <%}%>
+                <a href="/food/<%=product.id%>">
+                    <%= product.food_name%>
+                </a>
+            </li>
+            <%})%>
+                <%}%>
 </ul>
