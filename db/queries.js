@@ -35,8 +35,8 @@ async function getFoodInfo(foodId) {
 }
 
 
-async function insertFood(name, categoryId,supplierId, description ) {
-    await pool.query("INSERT INTO food (food_name, category_id, supplier_id, food_description) VALUES($1, $2, $3, $4)", [name, categoryId, supplierId, description]);
+async function insertFood(name, categoryId, description ) {
+    await pool.query("INSERT INTO food (food_name, category_id, food_description) VALUES($1, $2, $3)", [name, categoryId, description]);
 
 }
 
