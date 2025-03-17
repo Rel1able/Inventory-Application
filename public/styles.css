@@ -219,7 +219,10 @@ select:hover{
 }
 
 .errors-list{
-    color: var(--secondary-color)
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .category{

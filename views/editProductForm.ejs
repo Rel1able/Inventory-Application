@@ -18,7 +18,7 @@
                     <div class="form-container">
                         <form class="form" action="/food/<%= product.id%>/editProduct" method="POST">
                             <div class="select-container">
-                                <label for="category">Select the category</label>
+                                <label for="category">Select the Category</label>
                                 <select name="category">
                                     <% categories.forEach((category)=> {%>
                                         <option value="<%=category.id%>" <%=product.category_id===category.id
@@ -33,7 +33,7 @@
                                 <input type="text" value="<%= product.food_name%>" name="foodName" id="foodName" />
                             </div>
                             <div>
-                                <label for="foodDesc">Enter the product description</label>
+                                <label for="foodDesc">Enter the food description</label>
                                 <input type="text" value="<%= product.food_description%>" name="foodDesc"
                                     id="foodDesc" />
                             </div>

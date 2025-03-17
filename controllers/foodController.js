@@ -20,7 +20,7 @@ async function renderFoodInfo(req, res) {
     })
 }
 
-const alphaErr = "must only contain letters";
+const alphaErr = "can only contain letters";
 const validateFoodForm = [
     body("foodName")
         .trim()
@@ -29,11 +29,11 @@ const validateFoodForm = [
     body("foodDesc")
         .trim()
         .matches(/^[a-zA-Z .,]*$/).withMessage(`Food Description ${alphaErr}`)
-        .isLength({ min: 1, max: 50 }).withMessage("Description must be between 1 and 50 characters"),
+        .isLength({ min: 1, max: 50 }).withMessage("Description must be between 1 and 50 characters long"),
     body("category")
         .not()
-        .equals("Please choose the category you want to add the food to")
-        .withMessage("Please select the category you want to add the product")
+        .equals("Please select the category you would like to add the product to")
+        .withMessage("Please select the category you would like to add the product to")
 ]
 
 async function renderAddFoodForm(req, res) {

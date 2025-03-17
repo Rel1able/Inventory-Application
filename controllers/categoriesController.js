@@ -30,12 +30,12 @@ async function renderAddCategoryForm(req, res) {
         categories: categories
     })
 }
-const alphaErr = "must only contain letters";
+const alphaErr = "can only contain letters";
 const validateCategoryForm = [
     body("categoryName")
         .trim()
         .matches(/^[a-zA-Z ]*$/).withMessage(`Category name ${alphaErr}`)
-        .isLength({ min: 1, max: 20 }).withMessage(`The category name length must be between 1 and 20 characters`)
+        .isLength({ min: 1, max: 20 }).withMessage(`The length of the category name must be between 1 and 20 characters`)
 ]
 
 async function insertCategory(req, res) {
@@ -43,7 +43,7 @@ async function insertCategory(req, res) {
     const categories = await db.getAllCategories();
     if (!errors.isEmpty()) {
         return res.status(404).render("addCategoryForm", {
-            title: "Add category",
+            title: "Add Category",
             errors: errors.array(),
             categories: categories
     })
@@ -58,7 +58,7 @@ async function renderEditCategoryForm(req, res) {
     const categoryId = req.params.id;
     const category = await db.getCategory(categoryId);
     res.render("editCategoryForm", {
-        title: "Edit category",
+        title: "Edit Category",
         category: category,
         categories: categories
     })
@@ -73,7 +73,7 @@ async function saveEditedCategory(req, res) {
 
     if (!errors.isEmpty()) {
         return res.status(404).render("editCategoryForm", {
-        title: "Edit category",
+        title: "Edit Category",
         category: category,
         errors: errors.array(),
         categories: categories
