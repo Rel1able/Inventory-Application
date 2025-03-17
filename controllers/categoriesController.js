@@ -66,6 +66,7 @@ async function renderEditCategoryForm(req, res) {
 
 async function saveEditedCategory(req, res) {
     const errors = validationResult(req);
+    const categories = await db.getAllCategories();
     const categoryId = req.params.id;
     const category = await db.getCategory(categoryId);
     const newName = req.body.categoryName;
@@ -74,7 +75,8 @@ async function saveEditedCategory(req, res) {
         return res.status(404).render("editCategoryForm", {
         title: "Edit category",
         category: category,
-        errors: errors.array()
+        errors: errors.array(),
+        categories: categories
     })
     }
 
